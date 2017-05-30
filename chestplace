@@ -1,24 +1,24 @@
 local iItem = turtle.getItemDetail(1) --this saves the id, count, and damage count (uselss) of the block
 --"minecraft:iron_ingot" = x
-x = 0.05
+ x = 0.05
 --"minecraft:gold_nugget" = y
-y = 0.25
+ y = 0.25
 --"minecraft:gold_ingot" = a
-a = 2.50
+ a = 2.50
 --"minecraft:iron_block" = b
-b = 3.00
+ b = 3.00
 --"minecraft:gold_block" = c
-c = 25.00
+ c = 25.00
 --"minecraft:diamond" = d
-d = 50.00
+ d = 50.00
 --"minecraft:diamond_block" = h
-h = 450.00
+ h = 450.00
 --"minecraft:emerald" = e
-e = 100.00
+ e = 100.00
 --"minecraft:emerald_block" = f
-f = 900.00
+ f = 900.00
 --"minecraft:penz" = p
-p = 1.00
+ p = 1.00
  
 turtle.turnLeft()
 turtle.turnRight()
@@ -28,73 +28,73 @@ turtle.turnLeft()
  
 if iItem.name == "minecraft:diamond" then
    iItem.value = (iItem.count*d)  
-   rednet.open("left")
-   rednet.broadcast(iItem.value,"467")
-   rednet.close("left")
-   turtle.drop()
+    rednet.open("left")
+    rednet.broadcast(iItem.value,"467")
+    rednet.close("left")
+     turtle.drop()
  
   elseif iItem.name == "minecraft:diamond_block" then
    iItem.value = (iItem.count*h)  
-   rednet.open("left")
-   rednet.broadcast(iItem.value,"666")
-   rednet.close("left")
-   turtlel.drop()
+    rednet.open("left")
+    rednet.broadcast(iItem.value,"666")
+    rednet.close("left")
+     turtlel.drop()
  
   elseif iItem.name == "minecraft:gold_ingot" then
    iItem.value = (iItem.count*a)
-   rednet.open("left")
-   rednet.broadcast(iItem.value,"665")
-   rednet.close("left")
-   turtle.drop()
+    rednet.open("left")
+    rednet.broadcast(iItem.value,"665")
+    rednet.close("left")
+     turtle.drop()
  
  elseif iItem.name == "minecraft:gold_block" then
    iItem.value = (iItem.count*c)
-   rednet.open("left")
-   rednet.bradcast(iItem.value,"659")
-   rednet.close("left")
-   turtle.drop()
+    rednet.open("left")
+    rednet.bradcast(iItem.value,"659")
+    rednet.close("left")
+     turtle.drop()
  
  elseif iItem.name == "minecraft:gold_nugget" then
    iItem.value = (iItem.count*y)
-   rednet.open("left")
-   rednet.bradcast(iItem.value,"658")
-   rednet.close("left")
-   turtle.drop()
+    rednet.open("left")
+    rednet.bradcast(iItem.value,"658")
+    rednet.close("left")
+     turtle.drop()
  
  elseif iItem.name == "minecraft:emerald"then
    iItem.value = (iItem.count*e)
-   rednet.open("left")
-   rednet.broadcast(iItem.value,"565")
-   rednet.close("left")
-   turtle.drop()
+    rednet.open("left")
+    rednet.broadcast(iItem.value,"565")
+    rednet.close("left")
+     turtle.drop()
  
  elseif iItem.name == "minecraft:emerald_block" then
    iItem.value = (iItem.count*f)
-   rednet.open("left")
-   rednet.broadcast(iItem.value,"444")
-   rednet.close("left")
-   turtle.drop()
+    rednet.open("left")
+    rednet.broadcast(iItem.value,"444")
+    rednet.close("left")
+     turtle.drop()
  
  elseif iItem.name == "minecraft:iron_ingot" then
    iItem.value = (iItem.count*x)
-   rednet.open("left")
-   rednet.broadcast(iItem.value,"333")
-   rednet.close("left")
-   turtle.drop()
+    rednet.open("left")
+    rednet.broadcast(iItem.value,"333")
+    rednet.close("left")
+     turtle.drop()
  
  elseif iItem.name == "minecraft:iron_block" then
    iItem.value = (iItem.count*b)
-   rednet.open("left")
-   rednet.broadcast(iItem.value,"222")
-   rednet.close("left")
-   turtle.drop()
+    rednet.open("left")
+    rednet.broadcast(iItem.value,"222")
+    rednet.close("left")
+     turtle.drop()
  
  elseif iItem.name == "minecraft:penz" then
    iItem.value = (iItem.count*p)
-   rednet.open("left")
-   rednet.broadcast(iItem.value,"111")
-   rednet.close("left")
-   turtle.drop()
+    rednet.open("left")
+    rednet.broadcast(iItem.value,"111")
+    rednet.close("left")
+     turtle.drop()
  
  else
    turtle.turnRight()
