@@ -1,4 +1,6 @@
+--this will get the item detail thats in the turtles inventory.
 local iItem = turtle.getItemDetail(1) --this saves the id, count, and damage count (uselss) of the block
+--this is a list of the items acceptable to our bank and their values.
 --"minecraft:iron_ingot" = x
  x = 0.05
 --"minecraft:gold_nugget" = y
@@ -23,18 +25,25 @@ local iItem = turtle.getItemDetail(1) --this saves the id, count, and damage cou
 turtle.turnLeft()
 turtle.turnRight()
 turtle.turnRight()
+--this is to pick up the dropped items.
 turtle.suck()
 turtle.turnLeft()
  
+--this is for diamond that the clients want to deposit 
 if iItem.name == "minecraft:diamond" then
+--this is to transfer items to a certain slot
  turtle.transferTo(6) 
+--this is to get the amou nt of money the client has put in in diamonds
   iItem.value = (iItem.count*d)  
    rednet.open("left")
+--this is to send the value of the items back to the computer with a certain code
     rednet.broadcast(iItem.value,"467")
      rednet.close("left")
      turtle.select(6)
+--this is to drop the items into the chest     
       turtle.drop()
  
+--this is for diamond blocks that the clients want to deposit
   elseif iItem.name == "minecraft:diamond_block" then
    turtlr.transferTo(7)
     iItem.value = (iItem.count*h)  
@@ -44,6 +53,7 @@ if iItem.name == "minecraft:diamond" then
       turtle.select(7)
        turtlel.drop()
  
+ --this is for the gold ingots that the clients want to deposit
   elseif iItem.name == "minecraft:gold_ingot" then
    turtle.transferTo(3)
     iItem.value = (iItem.count*a)
@@ -53,6 +63,7 @@ if iItem.name == "minecraft:diamond" then
      turtle.select(3)
       turtle.drop()
  
+--this is for the gold blocks that the clients want to deposit
  elseif iItem.name == "minecraft:gold_block" then
   turtle.transferTo(5)
    iItem.value = (iItem.count*c)
@@ -62,6 +73,7 @@ if iItem.name == "minecraft:diamond" then
     turtle.select(5)
      turtle.drop()
  
+ --this is for the gold nuggets that the clients want to deposit
  elseif iItem.name == "minecraft:gold_nugget" then
  turtle.transferTo(2)
    iItem.value = (iItem.count*y)
@@ -71,15 +83,17 @@ if iItem.name == "minecraft:diamond" then
     turtle.select(2)
      turtle.drop()
  
+ --this is for the emeralds thhat the clients want to deposit
  elseif iItem.name == "minecraft:emerald"then
   turtle.transferTo(8)
    iItem.value = (iItem.count*e)
     rednet.open("left")
      rednet.broadcast(iItem.value,"565")
       rednet.close("left")
-    turtle.select(8)
+       turtle.select(8)
      turtle.drop()
  
+--this is for the emerald blocks that the client wants to deposit
  elseif iItem.name == "minecraft:emerald_block" then
   turle.transferTo(9)
    iItem.value = (iItem.count*f)
@@ -89,6 +103,7 @@ if iItem.name == "minecraft:diamond" then
      turtle.select(9)  
       turtle.drop()
  
+--this is for the iron ingots that the client wants to deposit
  elseif iItem.name == "minecraft:iron_ingot" then
  turtle.transferTo(1)
    iItem.value = (iItem.count*x)
@@ -98,6 +113,7 @@ if iItem.name == "minecraft:diamond" then
     turle.select(1)  
      turtle.drop()
  
+--this is for the iron blocks that the client wants to deposit
  elseif iItem.name == "minecraft:iron_block" then
   turtle.transferTo(4)
    iItem.value = (iItem.count*b)
@@ -107,6 +123,7 @@ if iItem.name == "minecraft:diamond" then
     turtle.select(4)   
      turtle.drop()
  
+--this is for our currency, the penz that bthe client wants to deposit
  elseif iItem.name == "minecraft:penz" then
   turtle.transferTo(10)
    iItem.value = (iItem.count*p)
@@ -115,7 +132,8 @@ if iItem.name == "minecraft:diamond" then
       rednet.close("left")
     turtle.select(10)   
      turtle.drop()
- 
+
+--this is to reject the items that arent compatible for our bank
  else
    turtle.turnRight()
    turtle.drop()
