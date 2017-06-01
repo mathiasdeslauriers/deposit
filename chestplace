@@ -39,7 +39,7 @@ if iItem.name == "minecraft:diamond" then
    turtlr.transferTo(7)
     iItem.value = (iItem.count*h)  
      rednet.open("left")
-      rednet.broadcast(iItem.value,"666")
+      rednet.broadcast(iItem.value,"665")
        rednet.close("left")
       turtle.select(7)
        turtlel.drop()
