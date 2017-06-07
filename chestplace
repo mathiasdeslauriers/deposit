@@ -1,138 +1,182 @@
---this will get the item detail thats in the turtles inventory.
+--this will ge tthe item detail thats in the turtles invertory
 turtle.select(1)
-local iItem = turtle.getItemDetail(1) --this saves the id, count, and damage count (uselss) of the block
+local iItem = turtle.getItemDetail(1) --this saves the id, count and damage (useless) of the block
+
 --this is a list of the items acceptable to our bank and their values.
---"minecraft:iron_ingot" = x
- x = 0.05
---"minecraft:gold_nugget" = y
- y = 0.25
---"minecraft:gold_ingot" = a
- a = 2.50
---"minecraft:iron_block" = b
- b = 3.00
---"minecraft:gold_block" = c
- c = 25.00
---"minecraft:diamond" = d
- d = 50.00
---"minecraft:diamond_block" = h
- h = 450.00
---"minecraft:emerald" = e
- e = 100.00
---"minecraft:emerald_block" = f
- f = 900.00
- 
-turtle.turnRight()
---this is to pick up the dropped items.
+--iron ingot
+local x = 0.05
+
+--gold nuget
+
+local y = 0.25
+
+--gold ingot
+
+local a = 2.5
+
+--iron block
+
+local b = 3.00
+
+-- gold block
+
+local c = 25.00
+
+-- diamond
+
+local d = 50.00
+
+--diamond block
+
+local h = 450.00
+
+--emerald
+
+local e = 100.00
+
+--emerald block
+
+local f = 900.00
+
+turtle.turnRight() -- this picks up the dropped items.
 turtle.suck()
 turtle.turnLeft()
 
-iItem = turtle.getItemDetail(1) 
+iItem = turtle.getItemDetail(1)
+
 if iItem.name == "minecraft:diamond" then
---this is for diamond that the clients want to deposit  if iItem.name == "minecraft:diamond" then
---this is to transfer items to a certain slot
- turtle.up()
- turlte.down()
- turtle.transferTo(6)
- turtle.up()
- turtle.down() 
---this is to get the amou nt of money the client has put in in diamonds
-  itemValue = 4 * d
-   rednet.open("left")
+--this is for diamond that the clients want to deposit
+--this will also transfer to a certain slot
+--  turtle.up()
+--  turtle.down()
+  turtle.transferTo(6)
+--  turtle.up()
+--  turtle.down()
+--this is to get the amount of money the item is worth
+  itemValue = iItem.count * d
+  rednet.open("left")
 --this is to send the value of the items back to the computer with a certain code
-    rednet.broadcast(itemValue,"467")
-    rednet.close("left")
-    turtle.select(6)
---this is to drop the items into the chest     
-      turtle.drop()
-      turtle.up()
- --     print("Ducats")
- 
---this is for diamond blocks that the clients want to deposit
-  elseif iItem.name == "minecraft:diamond_block" then
-   turtle.transferTo(7)
-    itemValue = iItem.count*h
-     rednet.open("left")
-      rednet.broadcast(itemValue,"467")
-       rednet.close("left")
-      turtle.select(7)
-       turtlel.drop()
- 
- --this is for the gold ingots that the clients want to deposit
-  elseif iItem.name == "minecraft:gold_ingot" then
-   turtle.transferTo(3)
-    itemValue = iItem.count*a
-     rednet.open("left")
-      rednet.broadcast(itemValue,"467")
-       rednet.close("left")
-     turtle.select(3)
-      turtle.drop()
- 
---this is for the gold blocks that the clients want to deposit
- elseif iItem.name == "minecraft:gold_block" then
+  rednet.broadcast(itemValue .." BOYIII", "467")
+  rednet.close("left")
+  turtle.select(6)
+--this is to drop the items into the chest
+  turtle.drop()
+
+elseif iItem.name == "minecraft:diamond_block" then
+--this is for diamond block that the clients want to deposit
+--this will also transfer to a certain slot
+  turtle.transferTo(7)
+--this is to get the amount of money the item is worth
+  itemValue = iItem.count * h
+  rednet.open("left")
+--this is to send the value of the items back to the computer with a certain code
+  rednet.broadcast(itemValue, "467")
+  rednet.close("left")
+  turtle.select(7)
+--this is to drop the items into the chest
+  turtle.drop()
+
+elseif iItem.name == "minecraft:gold_ingot" then
+--this is for gold ingot that the clients want to deposit
+--this will also transfer to a certain slot
+  turtle.transferTo(3)
+--this is to get the amount of money the item is worth
+  itemValue = iItem.count * a
+  rednet.open("left")
+--this is to send the value of the items back to the computer with a certain code
+  rednet.broadcast(itemValue, "467")
+  rednet.close("left")
+  turtle.select(3)
+--this is to drop the items into the chest
+  turtle.drop()
+
+elseif iItem.name == "minecraft:gold_block" then
+--this is for gold block that the clients want to deposit
+--this will also transfer to a certain slot
   turtle.transferTo(5)
-   itemValue = iItem.count*c
-    rednet.open("left")
-     rednet.bradcast(itemValue,"659")
-      rednet.close("left")
-    turtle.select(5)
-     turtle.drop()
+--this is to get the amount of money the item is worth
+  itemValue = iItem.count * c
+  rednet.open("left")
+--this is to send the value of the items back to the computer with a certain code
+  rednet.broadcast(itemValue, "467")
+  rednet.close("left")
+  turtle.select(5)
+--this is to drop the items into the chest
+  turtle.drop()
 
- --this is for the gold nuggets that the clients want to deposit
-   elseif iItem.name == "minecraft:gold_nugget" then
-     turtle.transferTo(2)
-       itemValue = iItem.count*y
-          rednet.open("left")
-            rednet.bradcast(itemValue,"658")
-              rednet.close("left")
-          turtle.select(2)
-            turtle.drop()
+elseif iItem.name == "minecraft:gold_nugget" then
+--this is for gold nugget that the clients want to deposit
+--this will also transfer to a certain slot
+  turtle.transferTo(2)
+--this is to get the amount of money the item is worth
+  itemValue = iItem.count * y
+  rednet.open("left")
+--this is to send the value of the items back to the computer with a certain code
+  rednet.broadcast(itemValue, "467")
+  rednet.close("left")
+  turtle.select(2)
+--this is to drop the items into the chest
+  turtle.drop()
 
---this is for the emeralds thhat the clients want to deposit
- elseif iItem.name == "minecraft:emerald"then
+elseif iItem.name == "minecraft:emerald" then
+--this is for emerald that the clients want to deposit
+--this will also transfer to a certain slot
   turtle.transferTo(8)
-   itemValue = iItem.count*e
-    rednet.open("left")
-     rednet.broadcast(itemValue,"467")
-      rednet.close("left")
-       turtle.select(8)
-     turtle.drop()
+--this is to get the amount of money the item is worth
+  itemValue = iItem.count * e
+  rednet.open("left")
+--this is to send the value of the items back to the computer with a certain code
+  rednet.broadcast(itemValue, "467")
+  rednet.close("left")
+  turtle.select(8)
+--this is to drop the items into the chest
+  turtle.drop()
 
---this is for the emerald blocks that the client wants to deposit
- elseif iItem.name == "minecraft:emerald_block" then
-  turle.transferTo(9)
-   itemValue = iItem.count*f
-    rednet.open("left")
-     rednet.broadcast(itemValue,"467")
-      rednet.close("left")
-     turtle.select(9)  
-      turtle.drop()
- 
---this is for the iron ingots that the client wants to deposit
- elseif iItem.name == "minecraft:iron_ingot" then
- turtle.transferTo(1)
-   itemValue = iItem.count*x
-    rednet.open("left")
-     rednet.broadcast(itemValue,"333")
-      rednet.close("left")
-    turle.select(1)  
-     turtle.drop()
- 
---this is for the iron blocks that the client wants to deposit
- elseif iItem.name == "minecraft:iron_block" then
+elseif iItem.name == "minecraft:emerald_block" then
+--this is for emerald block that the clients want to deposit
+--this will also transfer to a certain slot
+  turtle.transferTo(9)
+--this is to get the amount of money the item is worth
+  itemValue = iItem.count * f
+  rednet.open("left")
+--this is to send the value of the items back to the computer with a certain code
+  rednet.broadcast(itemValue, "467")
+  rednet.close("left")
+  turtle.select(9)
+--this is to drop the items into the chest
+  turtle.drop()
+
+elseif iItem.name == "minecraft:iron_ingot" then
+--this is for iron ingot that the clients want to deposit
+--this will also transfer to a certain slot
+  turtle.transferTo(1)
+--this is to get the amount of money the item is worth
+  itemValue = iItem.count * x
+  rednet.open("left")
+--this is to send the value of the items back to the computer with a certain code
+  rednet.broadcast(itemValue, "467")
+  rednet.close("left")
+  turtle.select(1)
+--this is to drop the items into the chest
+  turtle.drop()
+
+elseif iItem.name == "minecraft:iron_block" then
+--this is for iron block that the clients want to deposit
+--this will also transfer to a certain slot
   turtle.transferTo(4)
-   itemValue = iItem.count*b
-    rednet.open("left")
-     rednet.broadcast(itemValue,"467")
-      rednet.close("left")
-    turtle.select(4)   
-     turtle.drop()
+--this is to get the amount of money the item is worth
+  itemValue = iItem.count * b
+  rednet.open("left")
+--this is to send the value of the items back to the computer with a certain code
+  rednet.broadcast(itemValue, "467")
+  rednet.close("left")
+  turtle.select(4)
+--this is to drop the items into the chest
+  turtle.drop()
 
---this is to reject the items that arent compatible for our bank
- else
-   turtle.turnRight()
-   turtle.drop()
-   turtle.turnLeft()
- 
+--this is to reject the items that aren't compatabible with our bank
+else
+  turtle.turnRight()
+  turtle.drop()
+  turtle.turnLeft()
 end
- 
-turtle.turnRight()
